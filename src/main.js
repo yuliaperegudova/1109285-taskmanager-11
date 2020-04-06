@@ -2,7 +2,7 @@
 
 const TASK_COUNT = 3;
 
-const createSiteMenuTemplate = () => {
+const createSiteMenuTemplate = () => { // меню
   return (
     `<section class="control__btn-wrap">
       <input
@@ -35,7 +35,7 @@ const createSiteMenuTemplate = () => {
   );
 };
 
-const createFilterTemplate = () => {
+const createFilterTemplate = () => { // фильтры
   return (
     `<section class="main__filter filter container">
       <input
@@ -99,21 +99,25 @@ const createFilterTemplate = () => {
   );
 };
 
-const createBoardTemplate = () => {
+const createBoardTemplate = () => { // доска для карточек
   return (
     `<section class="board container">
-      <div class="board__filter-list">
-        <a href="#" class="board__filter">SORT BY DEFAULT</a>
-        <a href="#" class="board__filter">SORT BY DATE up</a>
-        <a href="#" class="board__filter">SORT BY DATE down</a>
-      </div>
-
       <div class="board__tasks"></div>
     </section>`
   );
 };
 
-const createTaskTemplate = () => {
+const createSortTemplate = () => { // сортировка
+  return (
+    `<div class="board__filter-list">
+      <a href="#" class="board__filter">SORT BY DEFAULT</a>
+      <a href="#" class="board__filter">SORT BY DATE up</a>
+      <a href="#" class="board__filter">SORT BY DATE down</a>
+    </div>`
+  );
+};
+
+const createTaskTemplate = () => { // карточка
   return (
     `<article class="card card--black">
       <div class="card__form">
@@ -161,7 +165,7 @@ const createTaskTemplate = () => {
   );
 };
 
-const createTaskEditTemplate = () => {
+const createTaskEditTemplate = () => { // редактирование карточки
   return (
     `<article class="card card--edit card--yellow card--repeat">
       <form class="card__form" method="get">
@@ -363,7 +367,7 @@ const createTaskEditTemplate = () => {
   );
 };
 
-const createLoadMoreButtonTemplate = () => {
+const createLoadMoreButtonTemplate = () => { // кнопка загрузки
   return (
     `<button class="load-more" type="button">load more</button>`
   );
@@ -383,6 +387,7 @@ render(siteMainElement, createBoardTemplate(), `beforeend`);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 const boardElement = siteMainElement.querySelector(`.board`);
 
+render(boardElement, createSortTemplate(), `afterbegin`);
 render(taskListElement, createTaskEditTemplate(), `beforeend`);
 
 for (let i = 0; i < TASK_COUNT; i++) {
