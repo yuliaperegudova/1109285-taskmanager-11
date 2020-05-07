@@ -6,6 +6,7 @@ const createBoardTemplate = () => {
   );
 };
 
+
 export default class Board {
   constructor() {
     this._element = null;
